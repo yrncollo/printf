@@ -52,4 +52,15 @@ unsigned int convert_sbase(buffer_t *output, long int num, char *base,
 unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base,
 		unsigned char flags, int wid, int prec);
 
+/**
+ * struct converter_s - A new type defining a converter struct.
+ * @specifier: A character representing a conversion specifier.
+ * @func: A pointer to a conversion function corresponding to specifier.
+ */
+typedef struct converter_s
+{
+	unsigned char specifier;
+	unsigned int (*func)(va_list, buffer_t *,\
+			unsigned char, char, char, unsigned char);
+} converter_t;
 #endif  /* _HOLBERTON_H */
